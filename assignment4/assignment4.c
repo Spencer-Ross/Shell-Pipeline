@@ -23,7 +23,7 @@ description:
 **********************************************************************/
 int main(int argc, char *argv[]){
 	int status, fd[2], isColon = 0;
-	int i, j = 0, k = 0;
+	int j = 0, k = 0;
 	char *left[argc+1], *right[argc+1];
 
 	if(pipe(fd) < 0)
@@ -80,7 +80,7 @@ int main(int argc, char *argv[]){
 
 	if(
 		(close(fd[0]) < 0) ||
-		(close(fd[0]) < 0) ||
+		(close(fd[0]) < 0) || //why twice? did i mean fd[1]?
 		(wait(NULL) < 0)
 	)
 		printf("%s\n", strerror(errno));
